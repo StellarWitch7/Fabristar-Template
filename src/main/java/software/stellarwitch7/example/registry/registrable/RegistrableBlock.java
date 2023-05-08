@@ -1,4 +1,4 @@
-package software.stellarwitch7.earthguard.registry.registrable;
+package software.stellarwitch7.example.registry.registrable;
 
 import net.minecraft.block.Block;
 

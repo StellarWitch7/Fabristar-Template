@@ -1,11 +1,10 @@
-package software.stellarwitch7.earthguard;
+package software.stellarwitch7.example;
 
 import net.minecraft.item.Items;
 import org.apache.commons.lang3.StringUtils;
-import software.stellarwitch7.earthguard.registry.ModItems;
-import software.stellarwitch7.earthguard.registry.ModRegistry;
-import software.stellarwitch7.earthguard.world.feature.ModConfiguredFeatures;
-import software.stellarwitch7.earthguard.world.gen.ModOreGeneration;
+import software.stellarwitch7.example.registry.ModRegistry;
+import software.stellarwitch7.example.world.feature.ModConfiguredFeatures;
+import software.stellarwitch7.example.world.gen.ModOreGeneration;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;

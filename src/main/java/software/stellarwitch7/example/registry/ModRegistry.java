@@ -1,9 +1,9 @@
-package software.stellarwitch7.earthguard.registry;
+package software.stellarwitch7.example.registry;
 
-import software.stellarwitch7.earthguard.ExampleMod;
-import software.stellarwitch7.earthguard.registry.registrable.RegistrableBlock;
-import software.stellarwitch7.earthguard.registry.registrable.RegistrableItem;
-import software.stellarwitch7.earthguard.registry.registrable.RegistrableStatusEffect;
+import software.stellarwitch7.example.ExampleMod;
+import software.stellarwitch7.example.registry.registrable.RegistrableBlock;
+import software.stellarwitch7.example.registry.registrable.RegistrableItem;
+import software.stellarwitch7.example.registry.registrable.RegistrableStatusEffect;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.Model;
 import net.minecraft.entity.effect.StatusEffect;

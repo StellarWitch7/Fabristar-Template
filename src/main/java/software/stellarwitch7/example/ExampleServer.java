@@ -1,4 +1,4 @@
-package software.stellarwitch7.earthguard;
+package software.stellarwitch7.example;
 
 import net.fabricmc.api.DedicatedServerModInitializer;
 

@@ -1,10 +1,10 @@
-package software.stellarwitch7.earthguard.datagen;
+package software.stellarwitch7.example.datagen;
 
-import software.stellarwitch7.earthguard.ExampleDataGenerator;
-import software.stellarwitch7.earthguard.ExampleMod;
-import software.stellarwitch7.earthguard.registry.ModRegistry;
-import software.stellarwitch7.earthguard.registry.registrable.RegistrableBlock;
-import software.stellarwitch7.earthguard.registry.registrable.RegistrableItem;
+import software.stellarwitch7.example.ExampleDataGenerator;
+import software.stellarwitch7.example.ExampleMod;
+import software.stellarwitch7.example.registry.ModRegistry;
+import software.stellarwitch7.example.registry.registrable.RegistrableBlock;
+import software.stellarwitch7.example.registry.registrable.RegistrableItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;

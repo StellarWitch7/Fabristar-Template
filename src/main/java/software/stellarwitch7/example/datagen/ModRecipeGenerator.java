@@ -1,17 +1,10 @@
-package software.stellarwitch7.earthguard.datagen;
+package software.stellarwitch7.example.datagen;
 
-import software.stellarwitch7.earthguard.ExampleDataGenerator;
-import software.stellarwitch7.earthguard.registry.ModBlocks;
-import software.stellarwitch7.earthguard.registry.ModItems;
+import software.stellarwitch7.example.ExampleDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.server.RecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
-import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.item.Items;
-import net.minecraft.util.Identifier;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeGenerator {

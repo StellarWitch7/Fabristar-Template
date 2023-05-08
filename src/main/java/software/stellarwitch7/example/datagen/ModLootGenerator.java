@@ -1,5 +1,6 @@
 package software.stellarwitch7.example.datagen;
 
+import net.minecraft.loot.context.LootContextType;
 import software.stellarwitch7.example.ExampleDataGenerator;
 import software.stellarwitch7.example.ExampleMod;
 import software.stellarwitch7.example.registry.ModRegistry;
@@ -16,6 +17,8 @@ import java.util.function.BiConsumer;
 public class ModLootGenerator {
 	public static void generate() {
 		ExampleDataGenerator.fabricDataGenerator.addProvider(SimpleBlockLootGenerator::new);
+		ExampleDataGenerator.fabricDataGenerator.addProvider(CustomBlockLootGenerator::new);
+		ExampleDataGenerator.fabricDataGenerator.addProvider(EntityLootGenerator::new);
 	}
 }
 
@@ -38,5 +41,25 @@ class SimpleBlockLootGenerator extends SimpleFabricLootTableProvider {
 						+ " has not been generated because hasSimpleLoot is set to false");
 			}
 		}
+	}
+}
+
+class CustomBlockLootGenerator extends SimpleFabricLootTableProvider {
+	public CustomBlockLootGenerator(FabricDataGenerator dataGenerator) {
+		super(dataGenerator, LootContextTypes.BLOCK);
+	}
+	
+	@Override
+	public void accept(BiConsumer<Identifier, LootTable.Builder> identifierBuilderBiConsumer) {
+	}
+}
+
+class EntityLootGenerator extends SimpleFabricLootTableProvider {
+	public EntityLootGenerator(FabricDataGenerator dataGenerator) {
+		super(dataGenerator, LootContextTypes.ENTITY);
+	}
+	
+	@Override
+	public void accept(BiConsumer<Identifier, LootTable.Builder> identifierBuilderBiConsumer) {
 	}
 }

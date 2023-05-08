@@ -25,7 +25,8 @@ class UkEnglishLangProvider extends FabricLanguageProvider {
 	
 	@Override
 	public void generateTranslations(TranslationBuilder translationBuilder) {
-		translationBuilder.add(ExampleMod.ITEM_GROUP, StringUtils.capitalize(ExampleMod.MOD_ID));
+		translationBuilder.add(ExampleMod.ITEM_GROUP,
+				StringUtils.capitalize(ExampleMod.MOD_ID));
 		
 		//Generate block translations
 		for (RegistrableBlock data : ModRegistry.publicRegistryBlocks) {
@@ -52,7 +53,8 @@ class UsEnglishLangProvider extends FabricLanguageProvider {
 	
 	@Override
 	public void generateTranslations(TranslationBuilder translationBuilder) {
-		translationBuilder.add(ExampleMod.ITEM_GROUP, StringUtils.capitalize(ExampleMod.MOD_ID));
+		translationBuilder.add(ExampleMod.ITEM_GROUP,
+				StringUtils.capitalize(ExampleMod.MOD_ID));
 		
 		//Generate block translations
 		for (RegistrableBlock data : ModRegistry.publicRegistryBlocks) {

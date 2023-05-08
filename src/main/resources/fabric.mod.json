@@ -18,16 +18,16 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "software.stellarwitch7.example.ExampleMod"
+      "com.github.stellarwitch7.example.ExampleMod"
     ],
     "client": [
-      "software.stellarwitch7.example.ExampleClient"
+      "com.github.stellarwitch7.example.ExampleClient"
     ],
     "server": [
-      "software.stellarwitch7.example.ExampleServer"
+      "com.github.stellarwitch7.example.ExampleServer"
     ],
     "fabric-datagen": [
-      "software.stellarwitch7.example.ExampleDataGenerator"
+      "com.github.stellarwitch7.example.ExampleDataGenerator"
     ]
   },
   "mixins": [

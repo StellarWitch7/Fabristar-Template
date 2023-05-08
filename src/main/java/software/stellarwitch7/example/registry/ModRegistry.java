@@ -1,5 +1,6 @@
 package software.stellarwitch7.example.registry;
 
+import org.apache.commons.lang3.StringUtils;
 import software.stellarwitch7.example.ExampleMod;
 import software.stellarwitch7.example.registry.registrable.RegistrableBlock;
 import software.stellarwitch7.example.registry.registrable.RegistrableItem;
@@ -45,7 +46,9 @@ public class ModRegistry {
 		loadRegistry();
 		
 		//Register blocks
-		ExampleMod.LOGGER.info("Registering " + ExampleMod.MOD_ID + " blocks");
+		ExampleMod.LOGGER.info("Registering "
+				+ StringUtils.capitalize(ExampleMod.MOD_ID)
+				+ " blocks");
 		for (RegistrableBlock data : registryBlocks) {
 			ExampleMod.LOGGER.info("Registering block <"
 					+ ExampleMod.MOD_ID + ":"
@@ -56,7 +59,9 @@ public class ModRegistry {
 		}
 		
 		//Register status effects
-		ExampleMod.LOGGER.info("Registering " + ExampleMod.MOD_ID + " status effects");
+		ExampleMod.LOGGER.info("Registering "
+				+ StringUtils.capitalize(ExampleMod.MOD_ID)
+				+ " status effects");
 		for (RegistrableStatusEffect data : registryEffects) {
 			ExampleMod.LOGGER.info("Registering effect <"
 					+ ExampleMod.MOD_ID + ":"
@@ -67,7 +72,9 @@ public class ModRegistry {
 		}
 		
 		//Register items
-		ExampleMod.LOGGER.info("Registering " + ExampleMod.MOD_ID + " items");
+		ExampleMod.LOGGER.info("Registering "
+				+ StringUtils.capitalize(ExampleMod.MOD_ID)
+				+ " items");
 		for (RegistrableItem data : registryItems) {
 			ExampleMod.LOGGER.info("Registering item <"
 					+ ExampleMod.MOD_ID + ":"

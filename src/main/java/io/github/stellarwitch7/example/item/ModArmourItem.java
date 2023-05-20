@@ -1,4 +1,4 @@
-package io.github.stellarwitch7.example.item.armour;
+package io.github.stellarwitch7.example.item;
 
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;

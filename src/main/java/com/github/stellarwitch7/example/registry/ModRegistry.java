@@ -2,15 +2,19 @@ package com.github.stellarwitch7.example.registry;
 
 import com.github.stellarwitch7.example.ExampleMod;
 import com.github.stellarwitch7.example.registry.registrable.RegistrableBlock;
+import com.github.stellarwitch7.example.registry.registrable.RegistrableEntity;
 import com.github.stellarwitch7.example.registry.registrable.RegistrableItem;
 import com.github.stellarwitch7.example.registry.registrable.RegistrableStatusEffect;
-import org.apache.commons.lang3.StringUtils;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.Model;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,14 +34,18 @@ public class ModRegistry {
 			new ArrayList<>();
 	public static final List<RegistrableItem> publicRegistryItems =
 			Collections.unmodifiableList(registryItems);
+	private static final ArrayList<RegistrableEntity> registryEntities =
+			new ArrayList<>();
+	public static final List<RegistrableEntity> publicRegistryEntities =
+			Collections.unmodifiableList(registryEntities);
 	
 	//Loads the other registry classes
 	public static void loadRegistry() {
 		ExampleMod.LOGGER.info("Preparing registry");
 		ModBlocks.load();
 		ModEffects.load();
+		ModEntities.load();
 		ModItems.load();
-		ModRenderers.load();
 	}
 	
 	public static void register() {
@@ -69,6 +77,19 @@ public class ModRegistry {
 			Registry.register(Registry.STATUS_EFFECT,
 					new Identifier(ExampleMod.MOD_ID, data.id),
 					data.effect);
+		}
+		
+		//Register entities
+		ExampleMod.LOGGER.info("Registering "
+				+ StringUtils.capitalize(ExampleMod.MOD_ID)
+				+ " entities");
+		for (RegistrableEntity data : registryEntities) {
+			ExampleMod.LOGGER.info("Registering entity <"
+					+ ExampleMod.MOD_ID + ":"
+					+ data.id + ">");
+			Registry.register(Registry.ENTITY_TYPE,
+					new Identifier(ExampleMod.MOD_ID, data.id),
+					data.entity);
 		}
 		
 		//Register items
@@ -120,6 +141,18 @@ public class ModRegistry {
 		newEffect.effect = effect;
 		registryEffects.add(newEffect);
 		return effect;
+	}
+	
+	public static EntityType createEntity(String name, EntityType entityType,
+										  DefaultAttributeContainer.Builder attributes) {
+		var newEntity = new RegistrableEntity();
+		newEntity.name = name;
+		newEntity.id = name.toLowerCase(Locale.ROOT).replace(" ", "_");
+		newEntity.entity = entityType;
+		FabricDefaultAttributeRegistry.register(entityType,
+				attributes);
+		registryEntities.add(newEntity);
+		return entityType;
 	}
 	
 	public static Item createItem(String name, Model model, boolean isBlock, Item item) {

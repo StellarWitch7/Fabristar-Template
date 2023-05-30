@@ -1,5 +1,6 @@
 package com.github.stellarwitch7.example.datagen;
 
+import com.github.stellarwitch7.example.registry.registrable.RegistrableEntity;
 import com.github.stellarwitch7.example.registry.registrable.RegistrableStatusEffect;
 import org.apache.commons.lang3.StringUtils;
 import com.github.stellarwitch7.example.ExampleDataGenerator;
@@ -38,6 +39,11 @@ class UkEnglishLangProvider extends FabricLanguageProvider {
 			translationBuilder.add(data.effect, data.name);
 		}
 		
+		//Generate entity translations
+		for (RegistrableEntity data : ModRegistry.publicRegistryEntities) {
+			translationBuilder.add(data.entity, data.name);
+		}
+		
 		//Generate item translations
 		for (RegistrableItem data : ModRegistry.publicRegistryItems) {
 			translationBuilder.add(data.item, data.name);
@@ -64,6 +70,11 @@ class UsEnglishLangProvider extends FabricLanguageProvider {
 		//Generate status effect translations
 		for (RegistrableStatusEffect data : ModRegistry.publicRegistryEffects) {
 			translationBuilder.add(data.effect, data.name);
+		}
+		
+		//Generate entity translations
+		for (RegistrableEntity data : ModRegistry.publicRegistryEntities) {
+			translationBuilder.add(data.entity, data.name);
 		}
 		
 		//Generate item translations

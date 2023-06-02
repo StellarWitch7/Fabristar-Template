@@ -1,10 +1,7 @@
 package com.github.stellarwitch7.example.registry;
 
 import com.github.stellarwitch7.example.ExampleMod;
-import com.github.stellarwitch7.example.registry.registrable.RegistrableBlock;
-import com.github.stellarwitch7.example.registry.registrable.RegistrableEntity;
-import com.github.stellarwitch7.example.registry.registrable.RegistrableItem;
-import com.github.stellarwitch7.example.registry.registrable.RegistrableStatusEffect;
+import com.github.stellarwitch7.example.util.registrable.*;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.Model;
@@ -12,6 +9,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.Item;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.apache.commons.lang3.StringUtils;
@@ -38,15 +36,22 @@ public class ModRegistry {
 			new ArrayList<>();
 	public static final List<RegistrableEntity> publicRegistryEntities =
 			Collections.unmodifiableList(registryEntities);
+	private static final ArrayList<RegistrableSound> registrySounds =
+			new ArrayList<>();
+	public static final List<RegistrableSound> publicRegistrySounds =
+			Collections.unmodifiableList(registrySounds);
 	
 	//Loads the other registry classes
-	public static void loadRegistry() {
+	private static void loadRegistry() {
 		ExampleMod.LOGGER.info("Preparing registry");
 		ModBlocks.load();
 		ModEffects.load();
 		ModEntities.load();
 		ModItems.load();
+		ModBlockEntities.load();
 		ModEvents.load();
+		ModSoundEvents.load();
+		ModMusic.load();
 	}
 	
 	public static void register() {
@@ -104,6 +109,19 @@ public class ModRegistry {
 			Registry.register(Registry.ITEM,
 					new Identifier(ExampleMod.MOD_ID, data.id),
 					data.item);
+		}
+		
+		//Register sound events
+		ExampleMod.LOGGER.info("Registering "
+				+ StringUtils.capitalize(ExampleMod.MOD_ID)
+				+ " sound events");
+		for (RegistrableSound data : registrySounds) {
+			ExampleMod.LOGGER.info("Registering sound event <"
+					+ ExampleMod.MOD_ID + ":"
+					+ data.id + ">");
+			Registry.register(Registry.SOUND_EVENT,
+					new Identifier(ExampleMod.MOD_ID, data.id),
+					data.soundEvent);
 		}
 	}
 	
@@ -165,5 +183,17 @@ public class ModRegistry {
 		newItem.item = item;
 		registryItems.add(newItem);
 		return item;
+	}
+	
+	public static SoundEvent createSound(String name) {
+		String id = name.toLowerCase(Locale.ROOT).replace(" ", "_");
+		Identifier identifier = new Identifier(ExampleMod.MOD_ID, id);
+		var newSound = new RegistrableSound();
+		var soundEvent = new SoundEvent(identifier);
+		newSound.id = id;
+		newSound.name = name;
+		newSound.soundEvent = soundEvent;
+		registrySounds.add(newSound);
+		return soundEvent;
 	}
 }

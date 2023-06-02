@@ -1,4 +1,4 @@
-package com.github.stellarwitch7.example.registry;
+package com.github.stellarwitch7.example.client;
 
 public class ClientRegistry {
 	private static void loadRegistry() {

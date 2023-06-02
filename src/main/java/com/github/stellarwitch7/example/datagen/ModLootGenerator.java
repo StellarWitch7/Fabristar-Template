@@ -3,7 +3,7 @@ package com.github.stellarwitch7.example.datagen;
 import com.github.stellarwitch7.example.ExampleDataGenerator;
 import com.github.stellarwitch7.example.ExampleMod;
 import com.github.stellarwitch7.example.registry.ModRegistry;
-import com.github.stellarwitch7.example.registry.registrable.RegistrableBlock;
+import com.github.stellarwitch7.example.util.registrable.RegistrableBlock;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
 import net.minecraft.data.server.BlockLootTableGenerator;

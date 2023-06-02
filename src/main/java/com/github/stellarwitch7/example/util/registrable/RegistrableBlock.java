@@ -1,4 +1,4 @@
-package com.github.stellarwitch7.example.registry.registrable;
+package com.github.stellarwitch7.example.util.registrable;
 
 import net.minecraft.block.Block;
 

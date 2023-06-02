@@ -1,6 +1,5 @@
-package com.github.stellarwitch7.example.registry.registrable;
+package com.github.stellarwitch7.example.util.registrable;
 
-import com.github.stellarwitch7.example.registry.registrable.RegistrableBase;
 import net.minecraft.entity.EntityType;
 
 public class RegistrableEntity extends RegistrableBase {

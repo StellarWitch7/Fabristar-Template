@@ -1,6 +1,6 @@
 package com.github.stellarwitch7.example;
 
-import com.github.stellarwitch7.example.registry.ClientRegistry;
+import com.github.stellarwitch7.example.client.ClientRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.MinecraftClient;
 

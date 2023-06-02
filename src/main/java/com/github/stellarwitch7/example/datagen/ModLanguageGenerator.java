@@ -48,7 +48,7 @@ class UkEnglishLangProvider extends FabricLanguageProvider {
 		
 		//Generate sound translations
 		for (RegistrableSound data : ModRegistry.publicRegistrySounds) {
-			translationBuilder.add(data.soundEvent.getId(), data.name);
+			translationBuilder.add("subtitles." + ExampleMod.MOD_ID + data.id, data.name);
 		}
 	}
 }
@@ -86,7 +86,7 @@ class UsEnglishLangProvider extends FabricLanguageProvider {
 		
 		//Generate sound translations
 		for (RegistrableSound data : ModRegistry.publicRegistrySounds) {
-			translationBuilder.add(data.soundEvent.getId(), data.name);
+			translationBuilder.add("subtitles." + ExampleMod.MOD_ID + data.id, data.name);
 		}
 	}
 }

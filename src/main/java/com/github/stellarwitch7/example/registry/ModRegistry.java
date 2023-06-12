@@ -9,9 +9,10 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -67,7 +68,7 @@ public class ModRegistry {
 			ExampleMod.LOGGER.info("Registering block <"
 					+ ExampleMod.MOD_ID + ":"
 					+ data.id + ">");
-			Registry.register(Registry.BLOCK,
+			Registry.register(Registries.BLOCK,
 					new Identifier(ExampleMod.MOD_ID, data.id),
 					data.block);
 		}
@@ -80,7 +81,7 @@ public class ModRegistry {
 			ExampleMod.LOGGER.info("Registering effect <"
 					+ ExampleMod.MOD_ID + ":"
 					+ data.id + ">");
-			Registry.register(Registry.STATUS_EFFECT,
+			Registry.register(Registries.STATUS_EFFECT,
 					new Identifier(ExampleMod.MOD_ID, data.id),
 					data.effect);
 		}
@@ -93,7 +94,7 @@ public class ModRegistry {
 			ExampleMod.LOGGER.info("Registering entity <"
 					+ ExampleMod.MOD_ID + ":"
 					+ data.id + ">");
-			Registry.register(Registry.ENTITY_TYPE,
+			Registry.register(Registries.ENTITY_TYPE,
 					new Identifier(ExampleMod.MOD_ID, data.id),
 					data.entity);
 		}
@@ -106,7 +107,7 @@ public class ModRegistry {
 			ExampleMod.LOGGER.info("Registering item <"
 					+ ExampleMod.MOD_ID + ":"
 					+ data.id + ">");
-			Registry.register(Registry.ITEM,
+			Registry.register(Registries.ITEM,
 					new Identifier(ExampleMod.MOD_ID, data.id),
 					data.item);
 		}
@@ -119,7 +120,7 @@ public class ModRegistry {
 			ExampleMod.LOGGER.info("Registering sound event <"
 					+ ExampleMod.MOD_ID + ":"
 					+ data.id + ">");
-			Registry.register(Registry.SOUND_EVENT,
+			Registry.register(Registries.SOUND_EVENT,
 					new Identifier(ExampleMod.MOD_ID, data.id),
 					data.soundEvent);
 		}
@@ -189,7 +190,7 @@ public class ModRegistry {
 		String id = name.toLowerCase(Locale.ROOT).replace(" ", "_");
 		Identifier identifier = new Identifier(ExampleMod.MOD_ID, id);
 		var newSound = new RegistrableSound();
-		var soundEvent = new SoundEvent(identifier);
+		var soundEvent = SoundEvent.of(identifier);
 		newSound.id = id;
 		newSound.name = name;
 		newSound.soundEvent = soundEvent;

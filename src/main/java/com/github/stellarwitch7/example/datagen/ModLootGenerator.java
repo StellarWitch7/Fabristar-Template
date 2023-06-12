@@ -4,36 +4,27 @@ import com.github.stellarwitch7.example.ExampleDataGenerator;
 import com.github.stellarwitch7.example.ExampleMod;
 import com.github.stellarwitch7.example.registry.ModRegistry;
 import com.github.stellarwitch7.example.util.registrable.RegistrableBlock;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
-import net.minecraft.data.server.BlockLootTableGenerator;
-import net.minecraft.loot.LootTable;
-import net.minecraft.loot.context.LootContextTypes;
-import net.minecraft.util.Identifier;
-
-import java.util.function.BiConsumer;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 
 public class ModLootGenerator {
 	public static void generate() {
-		ExampleDataGenerator.fabricDataGenerator.addProvider(SimpleBlockLootGenerator::new);
-		ExampleDataGenerator.fabricDataGenerator.addProvider(CustomBlockLootGenerator::new);
-		ExampleDataGenerator.fabricDataGenerator.addProvider(EntityLootGenerator::new);
+		ExampleDataGenerator.pack.addProvider(BlockLootGenerator::new);
+		ExampleDataGenerator.pack.addProvider(CustomBlockLootGenerator::new);
 	}
 }
 
 //For simple block drops
-class SimpleBlockLootGenerator extends SimpleFabricLootTableProvider {
-	public SimpleBlockLootGenerator(FabricDataGenerator dataGenerator) {
-		super(dataGenerator, LootContextTypes.BLOCK);
+class BlockLootGenerator extends FabricBlockLootTableProvider {
+	protected BlockLootGenerator(FabricDataOutput dataOutput) {
+		super(dataOutput);
 	}
 	
 	@Override
-	public void accept(BiConsumer<Identifier, LootTable.Builder> identifierBuilderBiConsumer) {
+	public void generate() {
 		for (RegistrableBlock data : ModRegistry.publicRegistryBlocks) {
 			if (data.hasSimpleLoot) {
-				identifierBuilderBiConsumer.accept(new Identifier(ExampleMod.MOD_ID,
-								"blocks/" + data.id),
-						BlockLootTableGenerator.drops(data.block));
+				addDrop(data.block);
 			} else {
 				ExampleMod.LOGGER.warn("The loot table for "
 						+ ExampleMod.MOD_ID + ":" + data.id
@@ -43,22 +34,13 @@ class SimpleBlockLootGenerator extends SimpleFabricLootTableProvider {
 	}
 }
 
-class CustomBlockLootGenerator extends SimpleFabricLootTableProvider {
-	public CustomBlockLootGenerator(FabricDataGenerator dataGenerator) {
-		super(dataGenerator, LootContextTypes.BLOCK);
+class CustomBlockLootGenerator extends FabricBlockLootTableProvider {
+	protected CustomBlockLootGenerator(FabricDataOutput dataOutput) {
+		super(dataOutput);
 	}
 	
 	@Override
-	public void accept(BiConsumer<Identifier, LootTable.Builder> identifierBuilderBiConsumer) {
-	}
-}
-
-class EntityLootGenerator extends SimpleFabricLootTableProvider {
-	public EntityLootGenerator(FabricDataGenerator dataGenerator) {
-		super(dataGenerator, LootContextTypes.ENTITY);
-	}
+	public void generate() {
 	
-	@Override
-	public void accept(BiConsumer<Identifier, LootTable.Builder> identifierBuilderBiConsumer) {
 	}
 }

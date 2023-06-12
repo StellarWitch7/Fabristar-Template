@@ -6,20 +6,21 @@ import com.github.stellarwitch7.example.registry.ModRegistry;
 import com.github.stellarwitch7.example.util.registrable.RegistrableBlock;
 import com.github.stellarwitch7.example.util.registrable.RegistrableItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 
 public class ModModelGenerator {
 	public static void generate() {
-		ExampleDataGenerator.fabricDataGenerator.addProvider(SimpleModelGenerator::new);
-		ExampleDataGenerator.fabricDataGenerator.addProvider(CustomModelGenerator::new);
+		ExampleDataGenerator.pack.addProvider(SimpleModelGenerator::new);
+		ExampleDataGenerator.pack.addProvider(CustomModelGenerator::new);
 	}
 }
 
 class SimpleModelGenerator extends FabricModelProvider {
-	public SimpleModelGenerator(FabricDataGenerator dataGenerator) {
-		super(dataGenerator);
+	public SimpleModelGenerator(FabricDataOutput output) {
+		super(output);
 	}
 	
 	@Override
@@ -44,8 +45,8 @@ class SimpleModelGenerator extends FabricModelProvider {
 }
 
 class CustomModelGenerator extends FabricModelProvider {
-	public CustomModelGenerator(FabricDataGenerator dataGenerator) {
-		super(dataGenerator);
+	public CustomModelGenerator(FabricDataOutput output) {
+		super(output);
 	}
 	
 	@Override

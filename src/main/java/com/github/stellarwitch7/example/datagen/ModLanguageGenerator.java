@@ -1,6 +1,7 @@
 package com.github.stellarwitch7.example.datagen;
 
 import com.github.stellarwitch7.example.util.registrable.*;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import org.apache.commons.lang3.StringUtils;
 import com.github.stellarwitch7.example.ExampleDataGenerator;
 import com.github.stellarwitch7.example.ExampleMod;
@@ -10,15 +11,15 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 
 public class ModLanguageGenerator {
 	public static void generate() {
-		ExampleDataGenerator.fabricDataGenerator.addProvider(UkEnglishLangProvider::new);
-		ExampleDataGenerator.fabricDataGenerator.addProvider(UsEnglishLangProvider::new);
+		ExampleDataGenerator.pack.addProvider(UkEnglishLangProvider::new);
+		ExampleDataGenerator.pack.addProvider(UsEnglishLangProvider::new);
 	}
 }
 
 //UK english translation
 class UkEnglishLangProvider extends FabricLanguageProvider {
-	public UkEnglishLangProvider(FabricDataGenerator dataGenerator) {
-		super(dataGenerator, "en_gb");
+	protected UkEnglishLangProvider(FabricDataOutput dataOutput) {
+		super(dataOutput);
 	}
 	
 	@Override
@@ -55,8 +56,8 @@ class UkEnglishLangProvider extends FabricLanguageProvider {
 
 //US english translation
 class UsEnglishLangProvider extends FabricLanguageProvider {
-	public UsEnglishLangProvider(FabricDataGenerator dataGenerator) {
-		super(dataGenerator, "en_us");
+	protected UsEnglishLangProvider(FabricDataOutput dataOutput) {
+		super(dataOutput);
 	}
 	
 	@Override

@@ -1,6 +1,6 @@
 package com.github.stellarwitch7.example;
 
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.Items;
 import org.apache.commons.lang3.StringUtils;
 import com.github.stellarwitch7.example.registry.ModRegistry;
@@ -18,7 +18,7 @@ public class ExampleMod implements ModInitializer {
 	public static final Logger LOGGER =
 			LoggerFactory.getLogger(StringUtils.capitalize(MOD_ID));
 	public static final ItemGroup ITEM_GROUP =
-			FabricItemGroup.builder(new Identifier(ExampleMod.MOD_ID, "main_item_group"))
+			FabricItemGroupBuilder.create(new Identifier(ExampleMod.MOD_ID, "main_item_group"))
 					.icon(() -> new ItemStack(Items.EMERALD))
 					.build();
 	

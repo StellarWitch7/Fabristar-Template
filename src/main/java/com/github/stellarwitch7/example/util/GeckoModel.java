@@ -2,10 +2,10 @@ package com.github.stellarwitch7.example.util;
 
 import com.github.stellarwitch7.example.ExampleMod;
 import net.minecraft.util.Identifier;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.model.GeoModel;
 
-public class GeckoModel<T extends IAnimatable> extends AnimatedGeoModel<T> {
+public class GeckoModel<T extends GeoAnimatable> extends GeoModel<T> {
 	private final boolean noAnimation;
 	private final String id;
 	private final ModelType modelType;
